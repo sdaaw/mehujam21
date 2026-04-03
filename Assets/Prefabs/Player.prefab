@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2684493026063762671}
   - component: {fileID: 7842971250359963818}
   - component: {fileID: 5567145030223720851}
+  - component: {fileID: 7195413841357237212}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,3 +165,21 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerActionMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7195413841357237212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657008177394543347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716792ee4d8254e48b613aa3a0efb8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpinningAttack
+  orbPrefab: {fileID: 3041784178419885604, guid: d0258a717e24ad34db3a34e369f64c65, type: 3}
+  orbCount: 4
+  orbitRadius: 4
+  rotationSpeed: 240
+  damage: 20
+  orbScale: 1

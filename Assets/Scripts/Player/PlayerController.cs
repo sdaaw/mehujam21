@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     {
         _moveInput = value.Get<Vector2>();
     }
+    void OnInteract(InputValue value)
+    {
+        GetComponent<SpinningAttack>().Upgrade();
+    }
 
     void FixedUpdate()
     {

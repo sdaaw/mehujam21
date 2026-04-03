@@ -15,11 +15,21 @@ public class GameManager : MonoBehaviour
 
     private Camera _camera;
     private CameraFollow _cameraFollow;
+
+    public static GameManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         _camera = Camera.main;
         _cameraFollow = _camera.GetComponent<CameraFollow>();
         SpawnPlayer();
+
+        //cache into memory to avoid initial lagspike, idk what else to come up with rn but it started to trigger me aaaaaaa
+        DamageNumberSpawner.Instance?.Spawn(1f, new Vector2(-500, -500));
     }
 
     public void SpawnPlayer()
