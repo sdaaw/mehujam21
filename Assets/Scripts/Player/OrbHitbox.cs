@@ -3,33 +3,33 @@ using UnityEngine;
 
 public class OrbHitbox : MonoBehaviour
 {
-    private float damage;
-    private GameObject owner;
-    private float hitCooldown = 0.2f;
-    private float hitTimer;
+    private float _damage;
+    private GameObject _owner;
+    private float _hitCooldown = 0.2f;
+    private float _hitTimer;
 
     private Transform _player; //for knockback vector
 
     public void Setup(float damage, GameObject owner)
     {
         _player = GameManager.Instance.Player.transform;
-        this.damage = damage;
-        this.owner = owner;
+        this._damage = damage;
+        this._owner = owner;
     }
 
     void Update()
     {
-        if (hitTimer > 0) hitTimer -= Time.deltaTime;
+        if (_hitTimer > 0) _hitTimer -= Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject == owner) return;
+        if (col.gameObject == _owner) return;
         if (!col.CompareTag("Enemy")) return;
-        if (hitTimer > 0) return;
+        if (_hitTimer > 0) return;
 
         Vector2 knockback = (col.transform.position - _player.transform.position).normalized * 2f;
-        col.GetComponent<Entity>()?.TakeDamage(damage, knockback);
-        hitTimer = hitCooldown;
+        col.GetComponent<Entity>()?.TakeDamage(_damage, knockback);
+        _hitTimer = _hitCooldown;
     }
 }
