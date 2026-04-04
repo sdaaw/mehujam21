@@ -17,7 +17,8 @@ public class Egg : Entity
     // Expose the base health percent for UI
     public float GetHealthPercentEgg()
     {
-        passiveHealthDecay-= Time.deltaTime * 2;
+        passiveHealthDecay-= Time.deltaTime * 0.5f;
+        Debug.Log(passiveHealthDecay);
         return passiveHealthDecay / 100;
     }
 

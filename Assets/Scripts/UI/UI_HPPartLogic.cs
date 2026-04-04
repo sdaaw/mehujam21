@@ -25,11 +25,13 @@ public class UI_HPPartLogic : MonoBehaviour
     {
         if(egg.GetHealthPercentEgg() < hpPos/5)
         {
-            gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f); // Set to semi-transparent
+            gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0f); // Set to 0
         }
         else
         {
-            gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1f); // Set to fully opaque
+            GetComponent<Image>().material.SetFloat("_CrackStrength", Mathf.Min(-egg.GetHealthPercentEgg() * 5 + hpPos+1, 1f));
+            //gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1f); // Set to fully opaque
         }
+        
     }
 }

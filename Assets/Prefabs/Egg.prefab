@@ -115,6 +115,7 @@ MonoBehaviour:
   HatchProgress: 0
   HatchTime: 0
   HatchSpeed: 0
+  passiveHealthDecay: 100
 --- !u!50 &-6471608749478490065
 Rigidbody2D:
   serializedVersion: 5

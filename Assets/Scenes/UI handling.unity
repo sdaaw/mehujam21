@@ -539,6 +539,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_HPLogic
   egg: {fileID: 4263143932942991640, guid: f2ec5e78209ea0c40a55085d2d19ada0, type: 3}
   hpBarPartPrefab: {fileID: 3767241796510066479, guid: 6f3b5e0a3f80765f0943dd9c3d835095, type: 3}
+  hpBarPartMaterials:
+  - {fileID: 2100000, guid: 9ecd3c69c2a20242995d999e037eaa10, type: 2}
+  - {fileID: 2100000, guid: 18ea54e2068e58261a014e9251fc4224, type: 2}
+  - {fileID: 2100000, guid: 09cfe0c67a71215c08fbb4f59c6b4100, type: 2}
+  - {fileID: 2100000, guid: 45a23c78b8e309c589886ceb5fa1f7f6, type: 2}
+  - {fileID: 2100000, guid: 3adeb514ff1b0af2692c8962e85ec895, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
