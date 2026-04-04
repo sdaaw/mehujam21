@@ -189,7 +189,13 @@ MonoBehaviour:
   rotationSpeed: 240
   damage: 20
   orbScale: 1
+  _projectilePrefab: {fileID: 4957891617676087639, guid: f7bf4782594bc4d4fbdff617672af1c8, type: 3}
   IsInfectionUpgrade: 0
+  IsProjectileUpgrade: 0
+  projectileShootCooldown: 0.1
+  projectileDamage: 10
+  projectileSpeed: 10
+  UpgradeLevel: 0
 --- !u!114 &440891334726906141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,4 +210,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Infection
   dotDamage: 2
   spreadAmount: 5
-  _isEnabled: 0
+  InfectionCooldown: 0

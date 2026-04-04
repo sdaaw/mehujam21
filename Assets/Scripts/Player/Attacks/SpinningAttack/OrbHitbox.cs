@@ -8,11 +8,14 @@ public class OrbHitbox : MonoBehaviour
     private float _hitCooldown = 0.2f;
     private float _hitTimer;
 
+    private bool _isInfectious;
 
-    public void Init(float damage, GameObject owner)
+
+    public void Init(float damage, GameObject owner, bool isInfectious)
     {
         _damage = damage;
         _owner = owner;
+        _isInfectious = isInfectious;
     }
 
     void Update()
@@ -28,6 +31,7 @@ public class OrbHitbox : MonoBehaviour
 
         Vector2 knockback = (col.transform.position - _owner.transform.position).normalized * 2f;
         col.GetComponent<Entity>()?.TakeDamage(_damage, knockback);
+        if (_isInfectious) Infection.Instance.ApplyInfection(col.GetComponent<Entity>());
         _hitTimer = _hitCooldown;
     }
 }

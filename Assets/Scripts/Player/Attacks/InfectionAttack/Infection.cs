@@ -9,23 +9,27 @@ public class Infection : MonoBehaviour
     public float dotDamage;
 
     public int spreadAmount;
-    public bool _isEnabled;
 
+    public static Infection Instance;
+
+    public float InfectionCooldown;
+    private float _timer;
+
+    private bool _canApply;
 
     void Start()
     {
-        EnableSkill();
+        Instance = this;
     }
 
-    public void Upgrade()
+    private void Update()
     {
-        dotDamage += 2f;
-        spreadAmount += 1;
-    }
-
-    public void EnableSkill()
-    {
-        _isEnabled = true;
+        if (_canApply) return;
+        _timer += Time.deltaTime;
+        if (_timer > InfectionCooldown) 
+        {
+            _canApply = true;
+        }
     }
 
     public Entity GetClosestEnemy(Vector3 from, GameObject source)
@@ -36,6 +40,7 @@ public class Infection : MonoBehaviour
         {
             if (enemy == source) continue;
             if (enemy.GetComponent<Entity>().dotDamagePool > 0) continue;
+            if (!enemy.GetComponent<Entity>()) continue;
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < closestDist)
             {
@@ -43,13 +48,17 @@ public class Infection : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
-        return closestEnemy.GetComponent<Entity>();
+        //idk it was giving me a lot of errors but it doesnt anymore so thats nice hehe
+        if (!closestEnemy?.GetComponent<Entity>()) return null;
+        return closestEnemy?.GetComponent<Entity>();
     }
 
     public void ApplyInfection(Entity hitEntity)
     {
+        if (!_canApply) return;
+
+        _canApply = false;
         if (GameManager.Instance.EnemiesAlive.Count <= 0) return;
-        if (!_isEnabled) return;
 
 
         Entity closestEnemy = GetClosestEnemy(transform.position, gameObject);
@@ -61,6 +70,7 @@ public class Infection : MonoBehaviour
         for (int i = 0; i < spreadAmount; i++)
         {
             closestEnemy = GetClosestEnemy(closestEnemy.transform.position, closestEnemy.gameObject);
+            if (closestEnemy == null) return;
             closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
             closestEnemy.ApplyDot(dotDamage);
         }
