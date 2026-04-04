@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    [SerializeField]
+    private GameObject _eggPrefab;
+
+    [HideInInspector]
+    public GameObject BigEgg;
+
     private void Awake()
     {
         Instance = this;
@@ -27,6 +33,7 @@ public class GameManager : MonoBehaviour
         _camera = Camera.main;
         _cameraFollow = _camera.GetComponent<CameraFollow>();
         SpawnPlayer();
+
 
         //cache into memory to avoid initial lagspike, idk what else to come up with rn but it started to trigger me aaaaaaa
         DamageNumberSpawner.Instance?.Spawn(1f, new Vector2(-500, -500));
@@ -42,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
 
         Player = Instantiate(_playerPrefab, PlayerSpawnPosition, Quaternion.identity);
+        BigEgg = Instantiate(_eggPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
         _camera.GetComponent<CameraFollow>().cameraTarget = Player.transform;
     }

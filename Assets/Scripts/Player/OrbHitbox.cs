@@ -10,11 +10,11 @@ public class OrbHitbox : MonoBehaviour
 
     private Transform _player; //for knockback vector
 
-    public void Setup(float damage, GameObject owner)
+    public void Init(float damage, GameObject owner)
     {
         _player = GameManager.Instance.Player.transform;
-        this._damage = damage;
-        this._owner = owner;
+        _damage = damage;
+        _owner = owner;
     }
 
     void Update()

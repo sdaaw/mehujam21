@@ -26,7 +26,7 @@ public class Entity : MonoBehaviour
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindWithTag("Player")?.transform;
+        target = GameManager.Instance.BigEgg.transform;
     }
 
     protected virtual void Update()
@@ -54,6 +54,11 @@ public class Entity : MonoBehaviour
             _newRotation.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + 90);
             _anim.IsFinished = false;
         }
+    }
+
+    public void SetTarget(Transform targetTransform)
+    {
+        target = targetTransform;
     }
 
     protected virtual void MoveTowardsTarget()

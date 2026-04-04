@@ -43,7 +43,7 @@ public class SpinningAttack : MonoBehaviour
             _orbs[i].transform.localScale = Vector3.one * orbScale;
 
             var hitbox = _orbs[i].GetComponent<OrbHitbox>();
-            if (hitbox != null) hitbox.Setup(damage, gameObject);
+            if (hitbox != null) hitbox.Init(damage, gameObject);
         }
     }
 
