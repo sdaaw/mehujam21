@@ -432,7 +432,7 @@ MonoBehaviour:
   _enemyPrefabs:
   - {fileID: 6575423632348813087, guid: 66439efbc876c734297d9c5daddc0b43, type: 3}
   _spawnRadius: 25
-  spawnInterval: 1
+  spawnInterval: 0.2
   center: {fileID: 0}
 --- !u!4 &699727510
 Transform:
@@ -713,6 +713,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   critColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   healColor: {r: 0, g: 1, b: 0, a: 1}
+  dotColor: {r: 0.8666667, g: 0.627451, b: 0.8666667, a: 1}
 --- !u!4 &1611181741
 Transform:
   m_ObjectHideFlags: 0
@@ -763,6 +764,7 @@ MonoBehaviour:
   IsPlayerSpawned: 0
   _eggPrefab: {fileID: 4263143932942991640, guid: f2ec5e78209ea0c40a55085d2d19ada0, type: 3}
   BigEgg: {fileID: 0}
+  EnemiesAlive: []
 --- !u!4 &1782538755
 Transform:
   m_ObjectHideFlags: 0

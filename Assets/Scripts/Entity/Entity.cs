@@ -63,7 +63,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void HandleDotDamage()
     {
-        if (dotDamagePool <= 0) return;
+        if (dotDamagePool <= 1) return;
         _dotTimer += Time.deltaTime;
         if(_dotTimer >= dotDamageTickSpeed)
         {
@@ -71,7 +71,7 @@ public class Entity : MonoBehaviour
             //I'd just have to change the whole OnDamage thing to support different types of damage and Im in a hurry so......
             _dotTimer = 0;
             float damage = Mathf.Pow(dotDamagePool, 1.3f);
-            TakeDamage(damage);
+            currentHealth -= damage;
             dotDamagePool -= damage;
 
             DamageNumberSpawner.Instance?.SpawnDot(damage, transform.position);

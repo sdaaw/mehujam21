@@ -113,6 +113,8 @@ MonoBehaviour:
   knockbackResistance: 0.5
   _animType: 1
   _animSpeed: 0.5
+  dotDamagePool: 0
+  dotDamageTickSpeed: 0.5
 --- !u!61 &3288966140116848983
 BoxCollider2D:
   m_ObjectHideFlags: 0
