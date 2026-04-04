@@ -5,7 +5,6 @@ public class Egg : Entity
     public float HatchProgress;
     public float HatchTime;
     public float HatchSpeed;
-    [Tooltip("Passive HP lost per second (set in inspector)")]
     public float passiveHealthDecay = 100f;
 
     // Eggs don't move/animate/attack but still use the Entity HP system
