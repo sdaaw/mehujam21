@@ -22,6 +22,8 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private float _animSpeed;
 
+    
+
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -116,6 +118,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void OnDeath()
     {
+        GameManager.Instance.EnemiesAlive.Remove(gameObject);
     }
 
     protected virtual void Die()

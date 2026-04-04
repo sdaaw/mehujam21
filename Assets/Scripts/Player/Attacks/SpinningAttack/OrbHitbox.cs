@@ -8,11 +8,9 @@ public class OrbHitbox : MonoBehaviour
     private float _hitCooldown = 0.2f;
     private float _hitTimer;
 
-    private Transform _player; //for knockback vector
 
     public void Init(float damage, GameObject owner)
     {
-        _player = GameManager.Instance.Player.transform;
         _damage = damage;
         _owner = owner;
     }
@@ -28,7 +26,7 @@ public class OrbHitbox : MonoBehaviour
         if (!col.CompareTag("Enemy")) return;
         if (_hitTimer > 0) return;
 
-        Vector2 knockback = (col.transform.position - _player.transform.position).normalized * 2f;
+        Vector2 knockback = (col.transform.position - _owner.transform.position).normalized * 2f;
         col.GetComponent<Entity>()?.TakeDamage(_damage, knockback);
         _hitTimer = _hitCooldown;
     }

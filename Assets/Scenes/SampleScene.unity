@@ -433,7 +433,6 @@ MonoBehaviour:
   - {fileID: 6575423632348813087, guid: 66439efbc876c734297d9c5daddc0b43, type: 3}
   _spawnRadius: 25
   spawnInterval: 1
-  _maxObjects: 50
   center: {fileID: 0}
 --- !u!4 &699727510
 Transform:
@@ -850,7 +849,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 15, y: 15}
+  m_Size: {x: 30, y: 30}
   m_AdaptiveModeThreshold: 0
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

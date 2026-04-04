@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public GameObject BigEgg;
+
+    public List<GameObject> EnemiesAlive = new();
 
     private void Awake()
     {

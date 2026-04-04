@@ -41,7 +41,7 @@ public class EnemySpawnManager : MonoBehaviour
         GameObject prefab = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)];
         GameObject enemy = Instantiate(prefab, spawnPoint, Quaternion.identity);
         enemy.GetComponent<Entity>().SetTarget(center);
-
+        GameManager.Instance.EnemiesAlive.Add(enemy);
     }
 
     private Vector2 GetRandomPointOnCircle()
