@@ -10,6 +10,7 @@ public class DamageNumberSpawner : MonoBehaviour
     public Color normalColor = Color.white;
     public Color critColor = Color.yellow;
     public Color healColor = Color.green;
+    public Color dotColor = Color.plum;
 
     void Awake()
     {
@@ -27,6 +28,12 @@ public class DamageNumberSpawner : MonoBehaviour
         SpawnWithColor(amount, worldPosition, healColor);
     }
 
+    public void SpawnDot(float amount, Vector3 worldPosition)
+    {
+        SpawnWithColor(amount, worldPosition, dotColor);
+        
+    }
+
     void SpawnWithColor(float value, Vector3 worldPosition, Color color)
     {
         if (damageNumberPrefab == null || worldCanvas == null) return;
@@ -36,5 +43,6 @@ public class DamageNumberSpawner : MonoBehaviour
         dn.Init(value, worldPosition, color);
 
         if (color == critColor) dn.startScale = 1.4f;
+        if (color == dotColor) dn.startScale = 0.8f;
     }
 }

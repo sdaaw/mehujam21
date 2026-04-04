@@ -22,7 +22,9 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private float _animSpeed;
 
-    
+    public float dotDamagePool; //adding dot damage to this attribute 
+    public float dotDamageTickSpeed;
+    private float _dotTimer;
 
     protected virtual void Start()
     {
@@ -42,6 +44,7 @@ public class Entity : MonoBehaviour
     {
         HandleAnimation();
         MoveTowardsTarget();
+        HandleDotDamage();
     }
 
     protected virtual void HandleAnimation()
@@ -56,6 +59,31 @@ public class Entity : MonoBehaviour
             _newRotation.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + 90);
             _anim.IsFinished = false;
         }
+    }
+
+    protected virtual void HandleDotDamage()
+    {
+        if (dotDamagePool < 0) return;
+        _dotTimer += Time.deltaTime;
+        if(_dotTimer >= dotDamageTickSpeed)
+        {
+            //handling dots seperated from the rest of the takedamage(); logic is probably a great idea
+            //I'd just have to change the whole OnDamage thing to support different types of damage and Im in a hurry so......
+            _dotTimer = 0;
+            float damage = Mathf.Pow(dotDamagePool, 1.3f);
+            TakeDamage(damage);
+            dotDamagePool -= damage;
+
+            DamageNumberSpawner.Instance?.SpawnDot(damage, transform.position);
+            if (currentHealth <= 0)
+                Die();
+        }
+    }
+
+    public void ApplyDot(float dotDamage)
+    {
+        //vfx here
+        dotDamagePool += dotDamage;
     }
 
     public void SetTarget(Transform targetTransform)
