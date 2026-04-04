@@ -14,8 +14,13 @@ public class SpinningAttack : MonoBehaviour
     private float _currAngle;
     private GameObject[] _orbs;
 
+    public bool IsInfectionUpgrade;
+
+    public static SpinningAttack Instance;
+
     void Start()
     {
+        Instance = this;
         SpawnOrbs();
     }
 

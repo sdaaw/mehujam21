@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 5a839da2b4df7a0468f3291a1165e601, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4649072fb08e834494e32559762578a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,6 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 8
+  _bunnyUp: {fileID: 21300000, guid: 1ce979e8be87d9c4daa35fd9ccf85903, type: 3}
+  _bunnyDown: {fileID: 21300000, guid: d4649072fb08e834494e32559762578a, type: 3}
+  _bunnySide: {fileID: 21300000, guid: 17e3dcaebbefc1b449447e525cfd5a1d, type: 3}
+  _bunnySideL: {fileID: 21300000, guid: 144a705f1696b624b99c393366e02ba1, type: 3}
+  _bunnyBlink: {fileID: 21300000, guid: 6a47b38c2c34ba04897bddc05ec3f33f, type: 3}
 --- !u!114 &5567145030223720851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +189,7 @@ MonoBehaviour:
   rotationSpeed: 240
   damage: 20
   orbScale: 1
+  IsInfectionUpgrade: 0
 --- !u!114 &440891334726906141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +203,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Infection
   dotDamage: 2
-  castCooldown: 2
-  castRange: 5
   spreadAmount: 5
   _isEnabled: 0

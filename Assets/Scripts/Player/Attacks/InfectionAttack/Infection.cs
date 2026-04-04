@@ -8,28 +8,17 @@ public class Infection : MonoBehaviour
 
     public float dotDamage;
 
-    public float castCooldown = 2f;
-    public float castRange = 5f;
-
     public int spreadAmount;
     public bool _isEnabled;
 
 
     void Start()
     {
-        StartCoroutine(InfectionCooldown());
         EnableSkill();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Upgrade()
     {
-        castCooldown -= castCooldown * 0.8f;
         dotDamage += 2f;
         spreadAmount += 1;
     }
@@ -57,29 +46,23 @@ public class Infection : MonoBehaviour
         return closestEnemy.GetComponent<Entity>();
     }
 
-    IEnumerator InfectionCooldown()
+    public void ApplyInfection(Entity hitEntity)
     {
-        while (true) 
+        if (GameManager.Instance.EnemiesAlive.Count <= 0) return;
+        if (!_isEnabled) return;
+
+
+        Entity closestEnemy = GetClosestEnemy(transform.position, gameObject);
+        if (closestEnemy == null) return;
+
+        closestEnemy.ApplyDot(dotDamage);
+        closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
+        List<Entity> infected = new();
+        for (int i = 0; i < spreadAmount; i++)
         {
-            yield return new WaitForSeconds(castCooldown);
-            if (GameManager.Instance.EnemiesAlive.Count <= 0) continue;
-            if (!_isEnabled) continue;
-
-
-            Entity closestEnemy = GetClosestEnemy(transform.position, gameObject);
-            if(closestEnemy == null) continue;
-
-            closestEnemy.ApplyDot(dotDamage);
+            closestEnemy = GetClosestEnemy(closestEnemy.transform.position, closestEnemy.gameObject);
             closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
-            List<Entity> infected = new();
-            for (int i = 0; i < spreadAmount; i++)
-            {
-                closestEnemy = GetClosestEnemy(closestEnemy.transform.position, closestEnemy.gameObject);
-                closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
-                closestEnemy.ApplyDot(dotDamage);
-            }
+            closestEnemy.ApplyDot(dotDamage);
         }
-        
     }
-
 }
