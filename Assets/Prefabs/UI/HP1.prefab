@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 790064495111734456}
   - component: {fileID: 7491706211424855317}
   - component: {fileID: 8728538754285062424}
+  - component: {fileID: 2007598995248543194}
   m_Layer: 5
   m_Name: HP1
   m_TagString: Untagged
@@ -75,3 +76,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2007598995248543194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767241796510066479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75de1c0171888f704bc2362a92bc8f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HPPartLogic
+  egg: {fileID: 0}

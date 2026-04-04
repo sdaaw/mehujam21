@@ -92,7 +92,7 @@ public class Entity : MonoBehaviour
             Die();
     }
 
-    public float GetHealthPercent() => currentHealth / maxHealth;
+    public virtual float GetHealthPercent() => currentHealth / maxHealth;
 
     protected virtual void ApplyKnockback(Vector2 force)
     {
