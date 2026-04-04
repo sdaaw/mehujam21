@@ -63,7 +63,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void HandleDotDamage()
     {
-        if (dotDamagePool < 0) return;
+        if (dotDamagePool <= 0) return;
         _dotTimer += Time.deltaTime;
         if(_dotTimer >= dotDamageTickSpeed)
         {

@@ -8,6 +8,7 @@ public class Infection : MonoBehaviour
     public float dotDamage;
 
     public float castCooldown = 2f;
+    public float castRange = 5f;
 
     public int spreadAmount;
     public bool _isEnabled;
@@ -34,7 +35,9 @@ public class Infection : MonoBehaviour
         GameObject closestEnemy = null;
         foreach(GameObject enemy in GameManager.Instance.EnemiesAlive)
         {
-            if(Vector3.Distance(transform.position, enemy.transform.position) < closestDist)
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist > castRange) continue;
+            if (dist < closestDist)
             {
                 closestDist = Vector3.Distance(transform.position, enemy.transform.position);
                 closestEnemy = enemy;
@@ -50,6 +53,7 @@ public class Infection : MonoBehaviour
         {
             yield return new WaitForSeconds(castCooldown);
             if (!_isEnabled) continue;
+
 
             Entity closestEnemy = GetClosestEnemy(transform.position);
             closestEnemy.ApplyDot(dotDamage);

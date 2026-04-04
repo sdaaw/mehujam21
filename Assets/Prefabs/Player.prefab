@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7842971250359963818}
   - component: {fileID: 5567145030223720851}
   - component: {fileID: 7195413841357237212}
+  - component: {fileID: 440891334726906141}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -183,3 +184,20 @@ MonoBehaviour:
   rotationSpeed: 240
   damage: 20
   orbScale: 1
+--- !u!114 &440891334726906141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657008177394543347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dcd0d3258e61b42be74def275fcf81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Infection
+  dotDamage: 10
+  castCooldown: 2
+  castRange: 5
+  spreadAmount: 5
+  _isEnabled: 0
