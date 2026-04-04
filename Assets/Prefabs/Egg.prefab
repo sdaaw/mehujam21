@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1912831780921346481}
   - component: {fileID: 3921751604130393754}
   - component: {fileID: 8844117742660139101}
+  - component: {fileID: -6471608749478490065}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Egg
@@ -104,3 +105,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07241bc424f98054ab98cf7ade04eb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Egg
+  maxHealth: 100
+  moveSpeed: 3
+  damage: 10
+  attackCooldown: 1
+  knockbackResistance: 0
+  _animType: 0
+  _animSpeed: 0
+  HatchProgress: 0
+  HatchTime: 0
+  HatchSpeed: 0
+--- !u!50 &-6471608749478490065
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263143932942991640}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

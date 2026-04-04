@@ -922,11 +922,12 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  enableDirectStorage: 0
+  cloudProjectId: 40a2c493-70b9-40cc-bd2e-edc2cf609436
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: My project (1) 2026-04-04_13-29-03
+  organizationId: master_hacker
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
