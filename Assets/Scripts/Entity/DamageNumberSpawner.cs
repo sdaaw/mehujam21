@@ -31,7 +31,6 @@ public class DamageNumberSpawner : MonoBehaviour
     public void SpawnDot(float amount, Vector3 worldPosition)
     {
         SpawnWithColor(amount, worldPosition, dotColor);
-        
     }
 
     void SpawnWithColor(float value, Vector3 worldPosition, Color color)

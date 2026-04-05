@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
     {
         GetComponent<SpinningAttack>().Upgrade();
     }
+    void OnRestart(InputValue value)
+    {
+        GameManager.Instance.RestartGame();
+    }
 
     void FixedUpdate()
     {

@@ -48,7 +48,7 @@ public class Entity : MonoBehaviour
             if (GameManager.Instance.IsGameOver) rb.linearVelocity = Vector2.zero;
             return;
         }
-        HandleAnimation();
+        //HandleAnimation();
         MoveTowardsTarget();
         HandleDotDamage();
     }
@@ -78,7 +78,6 @@ public class Entity : MonoBehaviour
             _dotTimer = 0;
             float damage = Mathf.Pow(dotDamagePool, 1.3f);
             currentHealth -= damage;
-            dotDamagePool -= damage;
 
             DamageNumberSpawner.Instance?.SpawnDot(damage, transform.position);
             if (currentHealth <= 0)

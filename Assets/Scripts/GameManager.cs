@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,7 +31,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _gameOverText;
+
+    [SerializeField]
+    private TMP_Text _eggHatchText;
+
+    [SerializeField]
+    private TMP_Text _eggHealthText;
     public bool IsGameOver;
+
+    private float _timer;
 
     private void Awake()
     {
@@ -45,6 +54,16 @@ public class GameManager : MonoBehaviour
 
         //cache into memory to avoid initial lagspike, idk what else to come up with rn but it started to trigger me aaaaaaa
         DamageNumberSpawner.Instance?.Spawn(1f, new Vector2(-500, -500));
+    }
+
+    public void UpdateEggHatchText(string text)
+    {
+        _eggHatchText.text = text;
+    }
+
+    public void UpdateEggHealthText(string text)
+    {
+        _eggHealthText.text = text;
     }
 
     public void SpawnPlayer()
@@ -62,13 +81,33 @@ public class GameManager : MonoBehaviour
         _camera.GetComponent<CameraFollow>().cameraTarget = Player.transform;
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        _timer += Time.deltaTime;
+        if(_timer > 20)
+        {
+            EnemySpawnManager.Instance.difficulty = 1.2f;
+        }
+        if (_timer > 40)
+        {
+            EnemySpawnManager.Instance.difficulty = 1.6f;
+            EnemySpawnManager.Instance.spawnInterval = 0.5f;
+        }
+        if (_timer > 60)
+        {
+            EnemySpawnManager.Instance.difficulty = 2f;
+            EnemySpawnManager.Instance.spawnInterval = 0.3f;
+        }
     }
 
     public void GameOver()
     {
-        _gameOverText.text = "Egg has been sogged. >.>";
+        _gameOverText.text = "Egg has been sogged. >.> \n Press R to try again.";
     }
 }

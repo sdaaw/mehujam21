@@ -72,6 +72,7 @@ public class SpinningAttack : MonoBehaviour
             var hitbox = _orbs[i].GetComponent<OrbHitbox>();
             if (hitbox != null) hitbox.Init(damage, gameObject, IsInfectionUpgrade);
         }
+        UpdateUpgradeLog();
     }
 
     private void SpawnProjectile()
@@ -95,17 +96,28 @@ public class SpinningAttack : MonoBehaviour
     }
     public void Upgrade()
     {
+
         UpgradeLevel++;
-        if(UpgradeLevel == 3)
+
+        switch(UpgradeLevel)
         {
-            UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Infection on hit");
-            IsInfectionUpgrade = true;
+            case 0: break;
+            case 1: break;
+            case 2: break;
+            case 3: 
+            {
+                IsInfectionUpgrade = true;
+                UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Infection on hit"); break; 
+            }
+            case 4: break;
+            case 5: 
+            {
+                IsProjectileUpgrade = true;
+                UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Projectiles"); break; 
+            }
+            case 6: break;
         }
-        if (UpgradeLevel == 5)
-        {
-            UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Projectiles");
-            IsProjectileUpgrade = true;
-        }
+
         orbCount++;
         orbitRadius += 0.3f;
         UpdateUpgradeLog();

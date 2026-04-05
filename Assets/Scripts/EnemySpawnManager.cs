@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
+
+    public static EnemySpawnManager Instance;
     [SerializeField]
     private GameObject[] _enemyPrefabs;
 
@@ -11,7 +13,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     public float spawnInterval = 1f;
 
-
+    public float difficulty = 1;
 
     public Transform center; //the egg
 
@@ -19,6 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
         if (center == null)
             center = transform;
     }
@@ -39,9 +42,14 @@ public class EnemySpawnManager : MonoBehaviour
         if (_enemyPrefabs.Length == 0) return;
 
         Vector2 spawnPoint = GetRandomPointOnCircle();
+        Entity ent;
         GameObject prefab = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)];
         GameObject enemy = Instantiate(prefab, spawnPoint, Quaternion.identity);
-        enemy.GetComponent<Entity>().SetTarget(center);
+        ent = enemy.GetComponent<Entity>();
+        ent.maxHealth = ent.maxHealth * difficulty;
+        ent.moveSpeed = ent.moveSpeed * difficulty;
+        ent.damage = ent.damage * difficulty;
+        ent.SetTarget(center);
         GameManager.Instance.EnemiesAlive.Add(enemy);
     }
 

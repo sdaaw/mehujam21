@@ -22,6 +22,6 @@ public class UI_HPPartLogic : MonoBehaviour
 
     private void Update()
     {
-        egg.GetComponent<SpriteRenderer>().material.SetFloat("_CrackStrength", Mathf.Min(egg.GetHealthPercentEgg(), 1f));
+        //egg.GetComponent<SpriteRenderer>().material.SetFloat("_CrackStrength", Mathf.Min(egg.GetHealthPercentEgg(), 1f));
     }
 }

@@ -84,12 +84,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: aacc24c919aa5a943a85b61ada5f50dc, type: 3}
-  m_Color: {r: 0.5754717, g: 0.14759888, b: 0.06243326, a: 1}
+  m_Sprite: {fileID: 3701468563039169852, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  m_Color: {r: 0.4669811, g: 0.90581024, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 2.2, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   maxHealth: 70
   moveSpeed: 3
   damage: 10
-  attackCooldown: 1
+  attackCooldown: 0.4
   attackRange: 4
   knockbackResistance: 0.5
   currentHealth: 0
@@ -117,6 +117,14 @@ MonoBehaviour:
   _animSpeed: 0.5
   dotDamagePool: 0
   dotDamageTickSpeed: 0.2
+  _runAnim:
+  - {fileID: 3701468563039169852, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  - {fileID: 5842115091388824731, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  - {fileID: -594456443620900913, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  - {fileID: 6221099077875199053, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  - {fileID: 2140168997638258328, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  - {fileID: -3003836925328261801, guid: 6a1014cff63068b478a2bf17e2ae719a, type: 3}
+  _spriteAnimSpeed: 0.1
 --- !u!61 &3288966140116848983
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,8 +163,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2.2, y: 2.5}
+    newSize: {x: 2.2, y: 2.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

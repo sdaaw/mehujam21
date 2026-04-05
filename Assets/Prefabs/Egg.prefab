@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07241bc424f98054ab98cf7ade04eb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Egg
-  maxHealth: 2000
+  maxHealth: 500
   moveSpeed: 3
   damage: 10
   attackCooldown: 1
@@ -117,9 +117,15 @@ MonoBehaviour:
   dotDamagePool: 0
   dotDamageTickSpeed: 0
   HatchProgress: 0
-  HatchTime: 0
-  HatchSpeed: 0
-  passiveHealthDecay: 100
+  HatchTime: 0.5
+  HatchSpeed: 5
+  xswaySpeed: 2.2
+  xswayAmount: 0.08
+  yswaySpeed: 1.8
+  yswayAmount: 0.05
+  randomVariation: 0.1
+  _sizeEasingType: 0
+  _sizeEasingSpeed: 0.3
 --- !u!50 &-6471608749478490065
 Rigidbody2D:
   serializedVersion: 5

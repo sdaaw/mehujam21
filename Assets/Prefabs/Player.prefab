@@ -84,7 +84,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: d4649072fb08e834494e32559762578a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,7 +188,7 @@ MonoBehaviour:
   orbitRadius: 4
   rotationSpeed: 240
   damage: 20
-  orbScale: 1
+  orbScale: 3
   _projectilePrefab: {fileID: 4957891617676087639, guid: f7bf4782594bc4d4fbdff617672af1c8, type: 3}
   IsInfectionUpgrade: 0
   IsProjectileUpgrade: 0
@@ -208,6 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dcd0d3258e61b42be74def275fcf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Infection
-  dotDamage: 5
-  spreadAmount: 5
+  dotDamage: 2
+  spreadAmount: 4
   InfectionCooldown: 0

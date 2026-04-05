@@ -65,13 +65,13 @@ public class Infection : MonoBehaviour
         if (closestEnemy == null) return;
 
         closestEnemy.ApplyDot(dotDamage);
-        closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
+        closestEnemy.GetComponent<SpriteRenderer>().color = Color.darkOliveGreen;
         List<Entity> infected = new();
         for (int i = 0; i < spreadAmount; i++)
         {
             closestEnemy = GetClosestEnemy(closestEnemy.transform.position, closestEnemy.gameObject);
             if (closestEnemy == null) return;
-            closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
+            closestEnemy.GetComponent<SpriteRenderer>().color = Color.darkOliveGreen;
             closestEnemy.ApplyDot(dotDamage);
         }
     }
