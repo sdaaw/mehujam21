@@ -37,6 +37,7 @@ public class Egg : Entity
 
     protected override void Update()
     {
+        if (GameManager.Instance.IsGameOver) return;
         _timer += Time.deltaTime;
         if(_timer > HatchTime)
         {

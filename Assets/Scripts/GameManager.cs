@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private float _timer;
 
+    public int TotalKills;
+
     private void Awake()
     {
         Instance = this;
@@ -101,13 +103,13 @@ public class GameManager : MonoBehaviour
         }
         if (_timer > 60)
         {
-            EnemySpawnManager.Instance.difficulty = 2f;
-            EnemySpawnManager.Instance.spawnInterval = 0.3f;
+            EnemySpawnManager.Instance.difficulty = 3f;
+            EnemySpawnManager.Instance.spawnInterval = 0.1f;
         }
     }
 
     public void GameOver()
     {
-        _gameOverText.text = "Egg has been sogged. >.> \n Press R to try again.";
+        _gameOverText.text = "Egg has been sogged. >.> \n You killed " + TotalKills + " slimes. \n Press R to try again.";
     }
 }

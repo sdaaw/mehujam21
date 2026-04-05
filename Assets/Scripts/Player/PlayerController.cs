@@ -28,10 +28,16 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer _sr;
 
+    [SerializeField]
+    private GameObject _bunny;
+
+    [SerializeField]
+    private float yswaySpeed, yswayAmount;
+
 
     void Start()
     {
-        _sr = GetComponent<SpriteRenderer>();
+        _sr = _bunny.GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
 
         StartCoroutine(BlinkAnimation());
@@ -60,6 +66,11 @@ public class PlayerController : MonoBehaviour
         _rb.linearVelocity = _moveInput * moveSpeed;
         if (_moveInput != Vector2.zero)
         {
+            Vector3 sway = new Vector3(
+                _bunny.transform.position.x,
+                _bunny.transform.position.y + Mathf.Cos(Time.time * yswaySpeed) * yswayAmount * Time.deltaTime,
+                _bunny.transform.position.z);
+            _bunny.transform.position = sway;
             lastMoveDir = _moveInput;
             UpdateSprite(_moveInput);
         }

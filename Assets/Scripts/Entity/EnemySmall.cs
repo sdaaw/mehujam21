@@ -34,6 +34,7 @@ public class EnemySmall : Entity
     protected override void OnDeath()
     {
         GameManager.Instance.EnemiesAlive.Remove(gameObject);
+        GameManager.Instance.TotalKills++;
         base.OnDeath();
     }
     protected override void MoveTowardsTarget()
