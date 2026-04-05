@@ -235,7 +235,7 @@ MonoBehaviour:
   _bunnyBlink: {fileID: 21300000, guid: 6a47b38c2c34ba04897bddc05ec3f33f, type: 3}
   _bunny: {fileID: 2202665050789049714}
   yswaySpeed: 17
-  yswayAmount: 0.7
+  yswayAmount: 1
 --- !u!114 &5567145030223720851
 MonoBehaviour:
   m_ObjectHideFlags: 0
