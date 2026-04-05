@@ -27,7 +27,7 @@ public class ProjectileHitbox : MonoBehaviour
 
     private void Update()
     {
-        _angle += 1 * Time.deltaTime;
+        _angle += 0.2f * Time.deltaTime;
         transform.Translate(_dir * _speed * Time.deltaTime);
         transform.Rotate(Vector3.forward, _angle);
     }

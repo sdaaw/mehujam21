@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> EnemiesAlive = new();
 
+    [SerializeField]
+    private TMP_Text _gameOverText;
+    public bool IsGameOver;
+
     private void Awake()
     {
         Instance = this;
@@ -52,7 +57,7 @@ public class GameManager : MonoBehaviour
         }
 
         Player = Instantiate(_playerPrefab, PlayerSpawnPosition, Quaternion.identity);
-        BigEgg = Instantiate(_eggPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        BigEgg = Instantiate(_eggPrefab, new Vector3(0, 5, 0), Quaternion.identity);
 
         _camera.GetComponent<CameraFollow>().cameraTarget = Player.transform;
     }
@@ -60,6 +65,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void GameOver()
+    {
+        _gameOverText.text = "Egg has been sogged. >.>";
     }
 }

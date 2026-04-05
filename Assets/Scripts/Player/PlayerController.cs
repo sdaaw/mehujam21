@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance.IsGameOver)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            return;
+        }
         _rb.linearVelocity = _moveInput * moveSpeed;
         if (_moveInput != Vector2.zero)
         {

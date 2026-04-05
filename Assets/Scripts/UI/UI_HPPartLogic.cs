@@ -4,9 +4,11 @@ using UnityEngine.UI;
 public class UI_HPPartLogic : MonoBehaviour
 {
 
-    [SerializeField] private Egg egg;
+    public Egg egg;
 
-    private float hpPos; 
+    private float hpPos;
+
+    public static UI_HPPartLogic Instance;
     public void InitChange(float _hpPos, Egg _egg)
     {
         hpPos = _hpPos;
@@ -15,23 +17,11 @@ public class UI_HPPartLogic : MonoBehaviour
 
     private void Start()
     {
-        if (egg == null)
-        {
-            GameObject eggObj = GameObject.FindWithTag("Egg");
-        }
+        Instance = this;
     }
 
     private void Update()
     {
-        if(egg.GetHealthPercentEgg() < hpPos/5)
-        {
-            gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0f); // Set to 0
-        }
-        else
-        {
-            GetComponent<Image>().material.SetFloat("_CrackStrength", Mathf.Min(-egg.GetHealthPercentEgg() * 5 + hpPos+1, 1f));
-            //gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1f); // Set to fully opaque
-        }
-        
+        egg.GetComponent<SpriteRenderer>().material.SetFloat("_CrackStrength", Mathf.Min(egg.GetHealthPercentEgg(), 1f));
     }
 }

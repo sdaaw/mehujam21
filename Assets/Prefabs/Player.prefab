@@ -208,6 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dcd0d3258e61b42be74def275fcf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Infection
-  dotDamage: 2
+  dotDamage: 5
   spreadAmount: 5
   InfectionCooldown: 0

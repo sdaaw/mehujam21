@@ -7,9 +7,11 @@ public class Entity : MonoBehaviour
     public float moveSpeed = 3f;
     public float damage = 10f;
     public float attackCooldown = 1f;
+    public float attackRange = 1f;
 
     public float knockbackResistance = 0f; // 0 = full knockback | 1 = immune
 
+    [SerializeField]
     protected float currentHealth;
     protected float attackTimer;
     protected Rigidbody2D rb;
@@ -35,13 +37,17 @@ public class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (attackTimer > 0)
-            attackTimer -= Time.deltaTime;
+        if (GameManager.Instance.IsGameOver) return;
 
     }
 
     protected virtual void FixedUpdate()
     {
+        if (GameManager.Instance.IsGameOver)
+        {
+            if (GameManager.Instance.IsGameOver) rb.linearVelocity = Vector2.zero;
+            return;
+        }
         HandleAnimation();
         MoveTowardsTarget();
         HandleDotDamage();
@@ -67,7 +73,7 @@ public class Entity : MonoBehaviour
         _dotTimer += Time.deltaTime;
         if(_dotTimer >= dotDamageTickSpeed)
         {
-            //handling dots seperated from the rest of the takedamage(); logic is probably a great idea
+            //handling dots seperated from the rest of the takedamage(); logic is probably a great idea /s
             //I'd just have to change the whole OnDamage thing to support different types of damage and Im in a hurry so......
             _dotTimer = 0;
             float damage = Mathf.Pow(dotDamagePool, 1.3f);
@@ -76,7 +82,7 @@ public class Entity : MonoBehaviour
 
             DamageNumberSpawner.Instance?.SpawnDot(damage, transform.position);
             if (currentHealth <= 0)
-                Die();
+                OnDeath();
         }
     }
 
@@ -94,6 +100,19 @@ public class Entity : MonoBehaviour
     protected virtual void MoveTowardsTarget()
     {
         if (target == null) return;
+
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if(dist <= attackRange)
+        {
+            rb.linearVelocity = Vector2.zero;
+            attackTimer += Time.deltaTime;
+            if (attackTimer >= attackCooldown) 
+            {
+                Attack();
+                attackTimer = 0;
+            }
+            return;
+        }
 
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
@@ -117,7 +136,7 @@ public class Entity : MonoBehaviour
         OnDamaged(amount);
 
         if (currentHealth <= 0)
-            Die();
+            OnDeath();
     }
 
     public virtual float GetHealthPercent() => currentHealth / maxHealth;
@@ -129,6 +148,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void TryAttack()
     {
+
         if (attackTimer > 0) return;
         attackTimer = attackCooldown;
         Attack();
@@ -146,18 +166,6 @@ public class Entity : MonoBehaviour
 
     protected virtual void OnDeath()
     {
-        GameManager.Instance.EnemiesAlive.Remove(gameObject);
-    }
-
-    protected virtual void Die()
-    {
-        OnDeath();
         Destroy(gameObject);
-    }
-
-    protected virtual void OnCollisionStay2D(Collision2D col)
-    {
-        if (!col.gameObject.CompareTag("Egg")) return;
-        TryAttack();
     }
 }

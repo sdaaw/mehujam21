@@ -11,14 +11,22 @@ public class Egg : Entity
     protected override void MoveTowardsTarget() { }
     protected override void HandleAnimation() { }
     protected override void Attack() { }
-    protected override void OnCollisionStay2D(Collision2D col) { }
 
     // Expose the base health percent for UI
     public float GetHealthPercentEgg()
     {
         passiveHealthDecay-= Time.deltaTime * 0.5f;
-        Debug.Log(passiveHealthDecay);
+        //Debug.Log(passiveHealthDecay);
         return passiveHealthDecay / 100;
     }
 
+    protected override void OnDeath()
+    {
+        GameManager.Instance.IsGameOver = true;
+        GameManager.Instance.GameOver();
+    }
+    protected override void OnDamaged(float amount)
+    {
+        base.OnDamaged(amount);
+    }
 }

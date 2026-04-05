@@ -30,6 +30,8 @@ public class SpinningAttack : MonoBehaviour
 
     public int UpgradeLevel = 0;
 
+    private string upgradeString;
+
     void Start()
     {
         Instance = this;
@@ -38,7 +40,7 @@ public class SpinningAttack : MonoBehaviour
 
     void Update()
     {
-
+        if (GameManager.Instance.IsGameOver) return;
         _currAngle += rotationSpeed * Time.deltaTime;
         PositionOrbs();
         if (!IsProjectileUpgrade) return;
@@ -96,15 +98,24 @@ public class SpinningAttack : MonoBehaviour
         UpgradeLevel++;
         if(UpgradeLevel == 3)
         {
+            UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Infection on hit");
             IsInfectionUpgrade = true;
         }
         if (UpgradeLevel == 5)
         {
+            UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Projectiles");
             IsProjectileUpgrade = true;
         }
         orbCount++;
         orbitRadius += 0.3f;
+        UpdateUpgradeLog();
         SpawnOrbs();
+    }
+
+    private void UpdateUpgradeLog()
+    {
+        upgradeString = "Orbs: " + orbCount + "\n" + "Orbit radius: " + orbitRadius.ToString("F2") + "\n";
+        UpgradeAnnouncer.Instance.AddLog(upgradeString);
     }
 
     void OnDestroy()
