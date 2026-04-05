@@ -92,24 +92,29 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-        if(_timer > 20)
+        if(_timer > 40)
         {
             EnemySpawnManager.Instance.difficulty = 1.2f;
         }
-        if (_timer > 40)
+        if (_timer > 70)
         {
             EnemySpawnManager.Instance.difficulty = 1.6f;
             EnemySpawnManager.Instance.spawnInterval = 0.5f;
         }
-        if (_timer > 60)
+        if (_timer > 120)
         {
             EnemySpawnManager.Instance.difficulty = 3f;
             EnemySpawnManager.Instance.spawnInterval = 0.1f;
+        }
+        if (_timer > 140)
+        {
+            EnemySpawnManager.Instance.difficulty = 4f;
+            EnemySpawnManager.Instance.spawnInterval = 0.01f;
         }
     }
 
     public void GameOver()
     {
-        _gameOverText.text = "Egg has been sogged. >.> \n You killed " + TotalKills + " slimes. \n Press R to try again.";
+        _gameOverText.text = "The Egg has been sogged. >.> \n You killed " + TotalKills + " slimes. \n Press R to try again.";
     }
 }

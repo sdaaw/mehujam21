@@ -304,5 +304,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Infection
   dotDamage: 2
-  spreadAmount: 4
+  spreadAmount: 2
   InfectionCooldown: 0

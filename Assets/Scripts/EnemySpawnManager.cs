@@ -45,11 +45,12 @@ public class EnemySpawnManager : MonoBehaviour
         Entity ent;
         GameObject prefab = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)];
         GameObject enemy = Instantiate(prefab, spawnPoint, Quaternion.identity);
+        enemy.transform.localScale = new Vector2(enemy.transform.localScale.x + Random.Range(-0.2f, 0.3f), enemy.transform.localScale.y + Random.Range(-0.2f, 0.3f));
         ent = enemy.GetComponent<Entity>();
         ent.maxHealth = ent.maxHealth * difficulty;
         ent.moveSpeed = ent.moveSpeed * difficulty;
-        ent.damage = ent.damage * difficulty;
-        ent.SetTarget(center);
+        ent.damage = ent.damage * difficulty + Random.Range(-3, 3);
+        ent.SetTarget(GameManager.Instance.BigEgg.transform);
         GameManager.Instance.EnemiesAlive.Add(enemy);
     }
 
@@ -57,12 +58,5 @@ public class EnemySpawnManager : MonoBehaviour
     {
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         return (Vector2)center.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * _spawnRadius;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Vector3 c = center != null ? center.position : transform.position;
-        Gizmos.DrawWireSphere(c, _spawnRadius);
     }
 }

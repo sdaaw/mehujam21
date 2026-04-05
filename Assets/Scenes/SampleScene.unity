@@ -1518,8 +1518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextSway
   xswaySpeed: 2.3
-  xswayAmount: 3
-  yswaySpeed: 1.2
+  xswayAmount: 4.2
+  yswaySpeed: 1.8
   yswayAmount: 2.1
   randomVariation: 1
 --- !u!1 &1782538753

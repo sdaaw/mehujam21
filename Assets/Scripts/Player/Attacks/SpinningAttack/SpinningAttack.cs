@@ -109,17 +109,26 @@ public class SpinningAttack : MonoBehaviour
                 IsInfectionUpgrade = true;
                 UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Infection on hit"); break; 
             }
-            case 4: break;
+            case 4:
+            {
+                Infection.Instance.dotDamage += 1;
+                break;
+            }
             case 5: 
             {
                 IsProjectileUpgrade = true;
                 UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Projectiles"); break; 
             }
-            case 6: break;
+            case 6:
+            {
+                Infection.Instance.dotDamage += 2;
+                break;
+            }
         }
-
+        damage += Random.Range(1, 3);
         orbCount++;
         orbitRadius += 0.3f;
+        
         UpdateUpgradeLog();
         SpawnOrbs();
     }
