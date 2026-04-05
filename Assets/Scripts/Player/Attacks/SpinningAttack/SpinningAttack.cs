@@ -111,10 +111,9 @@ public class SpinningAttack : MonoBehaviour
             }
             case 4:
             {
-                Infection.Instance.dotDamage += 1;
                 break;
             }
-            case 5: 
+            case 8: 
             {
                 IsProjectileUpgrade = true;
                 UpgradeAnnouncer.Instance.UpgradeText("UPGRADE: Projectiles"); break; 

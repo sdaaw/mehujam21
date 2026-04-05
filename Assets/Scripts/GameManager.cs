@@ -101,15 +101,30 @@ public class GameManager : MonoBehaviour
             EnemySpawnManager.Instance.difficulty = 1.6f;
             EnemySpawnManager.Instance.spawnInterval = 0.5f;
         }
-        if (_timer > 120)
+        if (_timer > 100)
         {
             EnemySpawnManager.Instance.difficulty = 3f;
-            EnemySpawnManager.Instance.spawnInterval = 0.1f;
+            EnemySpawnManager.Instance.spawnInterval = 0.3f;
         }
         if (_timer > 140)
         {
+            EnemySpawnManager.Instance.difficulty = 3.4f;
+            EnemySpawnManager.Instance.spawnInterval = 0.12f;
+        }
+        if (_timer > 150)
+        {
             EnemySpawnManager.Instance.difficulty = 4f;
-            EnemySpawnManager.Instance.spawnInterval = 0.01f;
+            EnemySpawnManager.Instance.spawnInterval = 0.1f;
+        }
+        if (_timer > 160)
+        {
+            EnemySpawnManager.Instance.difficulty = 4f;
+            EnemySpawnManager.Instance.spawnInterval = 0.08f;
+        }
+        if (_timer > 180)
+        {
+            EnemySpawnManager.Instance.difficulty = 4f;
+            EnemySpawnManager.Instance.spawnInterval = 0.06f;
         }
     }
 
